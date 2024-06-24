@@ -9,7 +9,7 @@ class Class (models.Model):
     class_capacity= models.PositiveSmallIntegerField()
     class_enrollment = models.PositiveBigIntegerField()
     room_number=models.PositiveSmallIntegerField()
-    class_equipment = models.CharField(max_length=25)
+    class_windows = models.PositiveSmallIntegerField()
 
 def __str__(self):
     return f"{self.class_name} {self.class_id}"
