@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class ClassPeriod (models.Model):
     class_starttime = models.TimeField()
     class_endtime = models.TimeField()
@@ -12,4 +13,4 @@ class ClassPeriod (models.Model):
 def __str__(self):
     return f"{self.class_startime} {self.class_endtime}"
 
-# Create your models here.
+# Create your mols hls here.
