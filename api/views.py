@@ -18,6 +18,23 @@ class StudentListView(APIView):
         student = Student.objects.all()
         serializer = StudentSerializer(student,many=True)
         return Response(serializer.data)
+
+    def get(self,request):
+        student = Student.objects.all()
+        first_name = request.query_params.get("first_name")
+        if first_name:
+            student=student.filter(first_name=first_name)
+            serializer = StudentSerializer(student,many=True)
+            return Response(serializer.data)
+    def get(self,request):
+        student = Student.objects.all()
+        country=request.query_params.get("country")
+        first_name = request.query_params.get("first_name")
+        if country:
+            student=student.filter(country=country)
+        if first_name:
+            student =student.filter(first_name=first_name)
+
          
     def post(self,request):
         serializer = StudentSerializer(data=request.data)
@@ -43,6 +60,19 @@ class StudentDetailView(APIView):
         student=Student.objects.get(id=id)
         student.delete()
         return Response(status=status.HTTP_202_ACCEPTED)
+    def enroll_student(student,course_id):
+        course=Course.objects.get(id=course_id)
+        studentcourses.add(course)
+
+    def post(self,request,id):
+        student=Student.objects.get(id=id)
+        action =request.data.get("action")
+        if action =="enroll":
+            course_id=request.data.get("course_id")
+            self.enroll_student(student,course_id)
+            return Response(status=status.HTTP_202_ACCEPTED)
+
+
 class  CoursesListView(APIView):
       def get(self,request):
         courses= Courses.objects.all()
