@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0; 
+        }
+        
+        form {
+            border: solid 2px #4CAF50;
+            padding: 40px; 
+            width: 500px;
+            border-radius: 30px;
+            background-color: #e8e5e5; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+            justify-content: center;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea, 
+        select { 
+            width: calc(100% - 20px);
+            padding: 15px; 
+            margin: 10px ;
+            border: 1px solid #ccc; /* Border for input fields */
+            border-radius: 5px; 
+            font-size: 16px; 
+        }
+        .btnsave {
+            background-color: rgb(32, 144, 79);
+            padding: 10px 25px;
+            border-radius: 25px;
+            color: aliceblue;
+            border: none; 
+            cursor: pointer; 
+            font-size: 16px; 
+        }
+        .btnsave:hover {
+            background-color: rgb(24, 100, 60); 
+        }
+        p {
+            padding: 10px;
+        }
+    </style>    
+</head>
+<body>
+    <h3 class="student">Student Registration</h3>
+    <form method="POST" class="register">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btnsave">Save</button>
+    </form>
+</body>
+</html>

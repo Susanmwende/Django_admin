@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0D1730;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .logout-button {
+            background-color: #f44336; /* Red background */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .logout-button:hover {
+            background-color: #c62828; /* Darker red on hover */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            color: #f44336;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Homepage</h1>
+    
+    {% if user.is_authenticated %}
+        <p>You are logged in as {{ user.username }}.</p>
+        <a href="{% url 'logout' %}" class="logout-button">Logout</a>  
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">login</a> to continue.</p>
+    {% endif %}
+    
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
