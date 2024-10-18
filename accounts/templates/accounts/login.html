@@ -74,8 +74,9 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>Login</h2>
         <form method="post">
+            <h2>Login</h2>
+
             {% csrf_token %}
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>

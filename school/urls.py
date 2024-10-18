@@ -27,5 +27,4 @@ urlpatterns = [
     path('', include('homepage.urls')),
 
 
-
 ]

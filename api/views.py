@@ -209,9 +209,9 @@ class ClassPeriodListView(APIView):
         )
         class_period.save()
 
-class WeeklyTimetableView(APIView):
+# class WeeklyTimetableView(APIView):
 
-    def get(self, request):
-        class_periods = ClassPeriod.objects.all()
-        serializer = ClassPeriodSerializer(class_periods, many=True)
-        return Response(serializer.data)
+#     def get(self, request):
+#         class_periods = ClassPeriod.objects.all()
+#         serializer = ClassPeriodSerializer(class_periods, many=True)
+#         return Response(serializer.data)

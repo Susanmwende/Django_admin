@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #0D1730;
+            background: linear-gradient(135deg, #0D1730, #1a1a2e); /* Gradient background */
             color: white;
             display: flex;
             flex-direction: column;
@@ -16,11 +17,26 @@
             height: 100vh;
             margin: 0;
             text-align: center;
+            animation: backgroundAnimation 10s infinite alternate; /* Animation */
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(135deg, #0D1730, #1a1a2e);
+            }
+            100% {
+                background: linear-gradient(135deg, #1a1a2e, #0D1730);
+            }
         }
 
         h1 {
             font-size: 48px;
             margin-bottom: 20px;
+            transition: transform 0.3s; /* Transition for hover effect */
+        }
+
+        h1:hover {
+            transform: scale(1.1); /* Scale effect on hover */
         }
 
         p {
@@ -47,6 +63,7 @@
             font-weight: bold;
             text-decoration: none;
             margin-top: 10px;
+            transition: background-color 0.3s; /* Transition for hover effect */
         }
 
         .logout-button:hover {
@@ -67,6 +84,7 @@
 </head>
 <body>
     <h1>Welcome to the Homepage</h1>
+    <img src="{% staticfiles 'susan.jpg' %}" alt="sue"/>    <p> </p>
     
     {% if user.is_authenticated %}
         <p>You are logged in as {{ user.username }}.</p>

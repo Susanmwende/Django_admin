@@ -3,58 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Student Registration</title>
     <style>
         body {
+            display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0; 
+            background-color: #0D1730; 
+            margin: 0; 
+            font-family: Arial, sans-serif; 
         }
-        
+
         form {
-            border: solid 2px #4CAF50;
+            border: solid 2px #2196F3; 
             padding: 40px; 
-            width: 500px;
+            width: 90%; 
+            max-width: 500px; 
             border-radius: 30px;
-            background-color: #e8e5e5; 
+            background-color: #e3f2fd; 
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
-            justify-content: center;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
         }
+
+        h3.student {
+            margin-bottom: 20px; 
+            color: #0D47A1; 
+        }
+
         input[type="text"],
         input[type="email"],
         input[type="password"],
         textarea, 
         select { 
-            width: calc(100% - 20px);
-            padding: 15px; 
-            margin: 10px ;
-            border: 1px solid #ccc; /* Border for input fields */
+            width: 100%; 
+            padding: 10px 10px; 
+            margin: 5px 0; 
+            border: 1px solid #90CAF9; 
             border-radius: 5px; 
             font-size: 16px; 
         }
+
         .btnsave {
-            background-color: rgb(32, 144, 79);
+            background-color: #2196F3; 
             padding: 10px 25px;
             border-radius: 25px;
-            color: aliceblue;
+            color: white; 
             border: none; 
             cursor: pointer; 
             font-size: 16px; 
+            margin-top: 10px; 
         }
+
         .btnsave:hover {
-            background-color: rgb(24, 100, 60); 
+            background-color: #1976D2; 
         }
+
+        .success-message {
+            color: #4CAF50; 
+            margin-top: 20px; 
+            font-size: 16px; 
+            text-align: center; 
+        }
+
         p {
             padding: 10px;
         }
     </style>    
 </head>
 <body>
-    <h3 class="student">Student Registration</h3>
     <form method="POST" class="register">
+        <h3 class="student">Student Registration</h3>
+
         {% csrf_token %}
         {{ form.as_p }}
+
+        {% if success %}
+            <div class="success-message">Your details have been saved successfully!</div>
+        {% endif %}
+
         <button type="submit" class="btnsave">Save</button>
     </form>
 </body>
